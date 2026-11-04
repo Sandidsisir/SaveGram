@@ -1,6 +1,6 @@
 # Changelog
 
-## [5.3.4] - 2026-11-04
+## [1.0.0] - Initial Open-Source Release
 
 ### Fixed
 - **Profile "Download All" & Post Resolution (`js/inject.js`)**:

@@ -4,13 +4,14 @@
   <p>A lightweight browser extension for downloading photos, videos, carousels, Stories, and Reels from Instagram.</p>
 
   <p>
-    <a href="https://github.com/Sandidsisir/SaveGram/releases/download/v5.3.4/SaveGram-v5.3.4.zip">
-      <img src="https://img.shields.io/badge/Download-SaveGram_v5.3.4_(.zip)-2ea44f?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Download ZIP" />
+    <a href="https://github.com/Sandidsisir/SaveGram/releases/download/v1.0.0/SaveGram-v1.0.0.zip">
+      <img src="https://img.shields.io/badge/Download-SaveGram_v1.0.0_(.zip)-2ea44f?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Download ZIP" />
     </a>
   </p>
 
   <p>
     <a href="https://github.com/Sandidsisir/SaveGram/releases/latest"><img src="https://img.shields.io/github/v/release/Sandidsisir/SaveGram?color=success&label=Release" alt="Latest Release" /></a>
+    <img src="https://img.shields.io/badge/Version-1.0.0-informational" alt="Version 1.0.0" />
     <img src="https://img.shields.io/badge/Manifest-V3-blue" alt="Manifest V3" />
     <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="License: MIT" />
   </p>
@@ -19,7 +20,7 @@
 ---
 
 ### Direct Download
-Download the ready-to-use extension archive: **[SaveGram-v5.3.4.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v5.3.4/SaveGram-v5.3.4.zip)**
+Download the ready-to-use extension archive: **[SaveGram-v1.0.0.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v1.0.0/SaveGram-v1.0.0.zip)**
 
 ---
 
@@ -28,7 +29,7 @@ Download the ready-to-use extension archive: **[SaveGram-v5.3.4.zip](https://git
 Setup takes about a minute and requires no developer tools:
 
 1. **Download and unpack the ZIP**:
-   - Download **[SaveGram-v5.3.4.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v5.3.4/SaveGram-v5.3.4.zip)**.
+   - Download **[SaveGram-v1.0.0.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v1.0.0/SaveGram-v1.0.0.zip)**.
    - Right-click the file and click **Extract All**. Keep the extracted folder somewhere permanent (like your Documents folder).
 
 2. **Open your browser's extension manager**:
@@ -42,7 +43,7 @@ Setup takes about a minute and requires no developer tools:
 
 4. **Load the folder**:
    - Click **Load unpacked** in the top-left corner.
-   - Select the extracted `SaveGram-v5.3.4` folder.
+   - Select the extracted `SaveGram-v1.0.0` folder.
 
 5. **Start using it**:
    - Open or refresh [instagram.com](https://www.instagram.com/). Download buttons will appear directly on posts, reels, and stories.
