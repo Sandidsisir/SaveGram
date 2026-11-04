@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.0] - 2026-11-05
+
+### Added
+- "Download Reel" action button injected directly into Instagram's native Reels 3-dot popup menu and dialogs.
+- Automatic detection and injection of download buttons on vertical Reels control strips with improved hover styling.
+
+### Fixed
+- Reel targeting: uses screen visibility calculations to detect active video elements accurately.
+- Filtered out non-media routes (`/audio/`, `/videos/`, `/saved/`) from shortcode matching.
+- Added direct video DOM fallback for reels when background API queries fail.
+
 ## [1.0.0] - Initial Open-Source Release
 
 ### Fixed

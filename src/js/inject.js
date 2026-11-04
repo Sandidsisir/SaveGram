@@ -70,7 +70,7 @@ function extractIdFromHref(el){
                (el.querySelector&&el.querySelector('a[href*="/p/"], a[href*="/reel/"], a[href*="/reels/"], a[href*="/tv/"]'));
     if(link){
       const href=link.getAttribute("href")||"";
-      const m=href.match(/\/(?:p|reel|reels|tv)\/([A-Za-z0-9_-]{5,})/);
+      const m=href.match(/\/(?:p|reel|reels|tv)\/(?!(?:audio|videos|saved|original)\b)([A-Za-z0-9_-]{5,})/);
       if(m&&m[1]){
         const id=shortcodeToId(m[1]);
         if(id)return id;
@@ -94,8 +94,9 @@ function r(el){
             if(Array.isArray(mp.items)&&mp.items.length>0){
               try{window.__igdl_storeStoryReel&&window.__igdl_storeStoryReel(mp)}catch(e){}
             }
-            for(const objKey of["post","media","item","story","reelItem","storyMedia","xdt_shortcode_media","reel"]){
-              const mObj=mp[objKey];
+            for(const objKey of["post","media","item","clip","story","reelItem","storyMedia","xdt_shortcode_media","reel","video"]){
+              const rawObj=mp[objKey];
+              const mObj=(rawObj&&"object"==typeof rawObj&&rawObj.media&&"object"==typeof rawObj.media)?rawObj.media:rawObj;
               if(mObj&&"object"==typeof mObj){
                 if(Array.isArray(mObj.items)&&mObj.items.length>0){
                   try{window.__igdl_storeStoryReel&&window.__igdl_storeStoryReel(mObj)}catch(e){}
@@ -129,7 +130,7 @@ function s(rootEl){
   const links=rootEl.querySelectorAll('a[href*="/p/"], a[href*="/reel/"], a[href*="/reels/"], a[href*="/tv/"]');
   for(const a of links){
     const href=a.getAttribute("href")||"";
-    const m=href.match(/\/(?:p|reel|reels|tv)\/([A-Za-z0-9_-]{5,})/);
+    const m=href.match(/\/(?:p|reel|reels|tv)\/(?!(?:audio|videos|saved|original)\b)([A-Za-z0-9_-]{5,})/);
     if(m&&m[1]){
       const id=shortcodeToId(m[1]);
       if(id)a.setAttribute("__igdl_id",id);

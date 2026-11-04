@@ -417,7 +417,7 @@ let Je=class{
     if(e){
       const directLink=e.closest?.('a[href*="/p/"], a[href*="/reel/"], a[href*="/reels/"], a[href*="/tv/"]');
       if(directLink){
-        const m=(directLink.getAttribute("href")||"").match(/\/(?:p|reel|reels|tv)\/([A-Za-z0-9_-]{5,})/);
+        const m=(directLink.getAttribute("href")||"").match(/\/(?:p|reel|reels|tv)\/(?!(?:audio|videos|saved|original)\b)([A-Za-z0-9_-]{5,})/);
         if(m&&m[1])return m[1];
       }
       let curr=e,depth=0;
@@ -426,7 +426,7 @@ let Je=class{
         if(links&&links.length>0){
           const codes=new Set;
           for(const a of links){
-            const m=(a.getAttribute("href")||"").match(/\/(?:p|reel|reels|tv)\/([A-Za-z0-9_-]{5,})/);
+            const m=(a.getAttribute("href")||"").match(/\/(?:p|reel|reels|tv)\/(?!(?:audio|videos|saved|original)\b)([A-Za-z0-9_-]{5,})/);
             if(m&&m[1])codes.add(m[1]);
           }
           if(1===codes.size)return[...codes][0];
@@ -434,7 +434,7 @@ let Je=class{
       }
     }
     if(t){
-      const m=location.href.match(/\/(?:p|reel|reels|tv)\/([A-Za-z0-9_-]{5,})/);
+      const m=location.href.match(/\/(?:p|reel|reels|tv)\/(?!(?:audio|videos|saved|original)\b)([A-Za-z0-9_-]{5,})/);
       if(m&&m[1])return m[1];
     }
     return"";
@@ -456,7 +456,7 @@ let Je=class{
       r=checkAttr(closestWithId);
       if(r)return r;
     }
-    const m=location.href.match(/\/(?:p|reel|reels|tv)\/([A-Za-z0-9_-]{5,})/);
+    const m=location.href.match(/\/(?:p|reel|reels|tv)\/(?!(?:audio|videos|saved|original)\b)([A-Za-z0-9_-]{5,})/);
     if(m&&m[1])return Xe.getIdFromShortcode(m[1]);
     return r;
   }
@@ -754,7 +754,7 @@ let et=Ze=class extends p{
 };
 et=Ze=e([w],et);
 
-class tt extends u{constructor(){super(),this.url=location.href,this.subscribeToLocationChangeListener()}static isHome(e){return/^https:\/\/www\.instagram\.com\/(\?.*)*$/.test(e)}static isPost(e){return/https:\/\/www\.instagram\.com\/p\/[^/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/(.*)\/p\/[^/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/(.*)\/reel\/[^/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/reel\/[^/]*\/(\?.*)*$/.test(e)}static isExplore(e){return/https:\/\/www\.instagram\.com\/explore\/tags\/[^\/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/explore\/$/.test(e)}static isStory(e){return/https:\/\/www\.instagram\.com\/stories\/[^/]*\/[^/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/stories\/[^/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/stories\/highlights\/[^/]*\/(\?.*)*$/.test(e)}static isChannel(e){return/https:\/\/www\.instagram\.com\/[^/]*\/channel\/(\?.*)*$/.test(e)}static isReel(e){return/https:\/\/www\.instagram\.com\/[^/]*\/reels\/(\?.*)*$/.test(e)}static isReelFeed(e){return/https:\/\/www\.instagram\.com\/reels\/[^/]*\/(\?.*)*$/.test(e)}static isTV(e){return/https:\/\/www\.instagram\.com\/tv\/[^/]*\/(\?.*)*$/.test(e)}static isSaved(e){return/https:\/\/www\.instagram\.com\/[^/]*\/saved\/(\?.*)*$/.test(e)}static isTagged(e){return/https:\/\/www\.instagram\.com\/[^/]*\/tagged\/(\?.*)*$/.test(e)}static isAccount(e){return/https:\/\/www\.instagram\.com\/[^/]*\/(\?.*)*$/.test(e)&&!/.*explore\/$/.test(e)}emitLocationEvent(){tt.isHome(this.url)&&this.emit("home"),tt.isPost(this.url)&&this.emit("post"),tt.isExplore(this.url)&&this.emit("explore"),tt.isStory(this.url)&&this.emit("story"),tt.isChannel(this.url)&&this.emit("channel"),tt.isTV(this.url)&&this.emit("tv"),tt.isSaved(this.url)&&this.emit("saved"),tt.isTagged(this.url)&&this.emit("tagged"),tt.isAccount(this.url)&&this.emit("account"),tt.isReel(this.url)&&this.emit("reels"),tt.isReelFeed(this.url)&&this.emit("reels_feed")}subscribeToLocationChangeListener(){window.addEventListener("locationchange",(()=>{this.url!==location.href&&(this.url=location.href,this.emitLocationEvent())}))}}
+class tt extends u{constructor(){super(),this.url=location.href,this.subscribeToLocationChangeListener()}static isHome(e){return/^https:\/\/www\.instagram\.com\/(\?.*)*$/.test(e)}static isPost(e){return/https:\/\/www\.instagram\.com\/p\/[^/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/(.*)\/p\/[^/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/(.*)\/reel\/[^/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/reel\/[^/]*\/(\?.*)*$/.test(e)}static isExplore(e){return/https:\/\/www\.instagram\.com\/explore\/tags\/[^\/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/explore\/$/.test(e)}static isStory(e){return/https:\/\/www\.instagram\.com\/stories\/[^/]*\/[^/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/stories\/[^/]*\/(\?.*)*$/.test(e)||/https:\/\/www\.instagram\.com\/stories\/highlights\/[^/]*\/(\?.*)*$/.test(e)}static isChannel(e){return/https:\/\/(?:www\.)?instagram\.com\/[^\/]+\/channel(?:\/.*)?$/i.test(e)}static isReel(e){return/https:\/\/(?:www\.)?instagram\.com\/[^\/]+\/reels(?:\/.*)?$/i.test(e)&&!/https:\/\/(?:www\.)?instagram\.com\/(?:explore|reels|stories|direct|accounts|p|reel|tv)\b/i.test(e)}static isReelFeed(e){return/^https:\/\/(?:www\.)?instagram\.com\/reels(?:\/.*)?$/i.test(e)}static isTV(e){return/https:\/\/(?:www\.)?instagram\.com\/tv\/[^\/]+(?:\/.*)?$/i.test(e)}static isSaved(e){return/https:\/\/(?:www\.)?instagram\.com\/[^\/]+\/saved(?:\/.*)?$/i.test(e)}static isTagged(e){return/https:\/\/(?:www\.)?instagram\.com\/[^\/]+\/tagged(?:\/.*)?$/i.test(e)}static isAccount(e){return/https:\/\/(?:www\.)?instagram\.com\/[a-zA-Z0-9._]{1,30}\/?(?:\?.*)?$/i.test(e)&&!/https:\/\/(?:www\.)?instagram\.com\/(?:explore|reels|stories|direct|accounts|p|reel|tv)\b/i.test(e)}emitLocationEvent(){tt.isHome(this.url)&&this.emit("home"),tt.isPost(this.url)&&this.emit("post"),tt.isExplore(this.url)&&this.emit("explore"),tt.isStory(this.url)&&this.emit("story"),tt.isChannel(this.url)&&this.emit("channel"),tt.isTV(this.url)&&this.emit("tv"),tt.isSaved(this.url)&&this.emit("saved"),tt.isTagged(this.url)&&this.emit("tagged"),tt.isAccount(this.url)&&this.emit("account"),tt.isReel(this.url)&&this.emit("reels"),tt.isReelFeed(this.url)&&this.emit("reels_feed")}subscribeToLocationChangeListener(){window.addEventListener("locationchange",(()=>{this.url!==location.href&&(this.url=location.href,this.emitLocationEvent())}));window.addEventListener("popstate",(()=>{this.url!==location.href&&(this.url=location.href,this.emitLocationEvent())}));setInterval((()=>{this.url!==location.href&&(this.url=location.href,this.emitLocationEvent())}),300)}}
 var nt,rt;!function(e){e.HOME="home",e.POST="post",e.EXPLORE="explore",e.STORY="story",e.CHANNEL="channel",e.TV="tv",e.SAVED="saved",e.TAGGED="tagged",e.ACCOUNT="account",e.REELS="reels",e.REELS_FEED="reels_feed"}(nt||(nt={}));
 class ot{static parseUrlData(e,t){const n=e.split("/"),r=t.split("/"),o={};for(let e=0;e<n.length;e++){let t=n[e];if(!t||""===t.trim()||"{"!==t[0])continue;if(t=t.slice(1,-1),""===t.trim())continue;let i=t.startsWith("?"),a=i?t.slice(1):t;e<r.length?o[a]=r[e]:i||(o[a]=null)}return o}static parseType(e){if(this.isStoriesRoute(e))return nt.STORY}static parseData(e){const t=this.parseType(e);if(!t)return null;const n=this.urlStructures[t];return this.parseUrlData(n,e)}}ot.urlStructures={[nt.STORY]:"/stories/{username}/{?initial_media_id}/"},ot.isStoriesRoute=e=>/^\/?stories\/[a-zA-Z0-9._]{1,}(?:\/[\d]+)?\/?(?:[?#].*)?$/i.test(e);
 
@@ -1005,46 +1005,262 @@ let ct=ut=class extends p{
 var dt;ct=ut=e([w],ct);
 
 let ft=dt=class extends p{
-  constructor(){super(...arguments),this.creationTimeoutList=[],this.removed=!0}
+  constructor(){
+    super(...arguments);
+    this.creationTimeoutList=[];
+    this.removed=!0;
+    this.pollInterval=null;
+    this.lastMenuTriggerEl=null;
+    this.lastActiveVideo=null;
+    this.setupGlobalMenuAndReelsObserver();
+  }
+  static getMostVisibleVideo(contextEl=null){
+    if(contextEl&&contextEl.isConnected){
+      let curr=contextEl;
+      for(let d=0;curr&&d<10;curr=curr.parentElement,d++){
+        const v=curr.querySelector?.("video");
+        if(v){
+          const rc=v.getBoundingClientRect();
+          if(rc.width>=100&&rc.height>=100)return v;
+        }
+      }
+    }
+    const vids=[...document.querySelectorAll("video")];
+    let bestVid=null,bestScore=-1;
+    const vh=window.innerHeight||800,vw=window.innerWidth||1200;
+    for(const v of vids){
+      const rc=v.getBoundingClientRect();
+      if(rc.width<100||rc.height<100)continue;
+      const visTop=Math.max(0,rc.top),visBottom=Math.min(vh,rc.bottom);
+      const visLeft=Math.max(0,rc.left),visRight=Math.min(vw,rc.right);
+      const visH=Math.max(0,visBottom-visTop),visW=Math.max(0,visRight-visLeft);
+      const area=visW*visH;
+      if(area>bestScore){
+        bestScore=area;
+        bestVid=v;
+      }
+    }
+    return bestVid;
+  }
+  static getReelsControlStrips(){
+    const strips=new Set;
+    try{
+      if(y.reelsControlsStrip){
+        document.querySelectorAll(y.reelsControlsStrip).forEach((el=>{
+          if(!el.querySelector("video"))strips.add(el);
+        }));
+      }
+    }catch(e){}
+    // Find every Reel's right-side vertical action bar (which contains Like, Comment, Share, Save, and the 3-dots More button)
+    const candidateSvgs=document.querySelectorAll(
+      'main svg[aria-label*="Like" i], main svg[aria-label*="Unlike" i], ' +
+      'main svg[aria-label*="Comment" i], main svg[aria-label*="Share" i], ' +
+      'main svg[aria-label*="Save" i], main svg[aria-label*="More" i], ' +
+      'main div[role="button"] svg'
+    );
+    for(const svg of candidateSvgs){
+      let curr=svg.closest('div[role="button"], button')?.parentElement;
+      for(let depth=0;curr&&depth<6;curr=curr.parentElement,depth++){
+        if(curr.querySelector("video"))break;
+        const rc=curr.getBoundingClientRect();
+        if(rc.width>110)break;
+        const btnCount=curr.querySelectorAll('div[role="button"], button').length;
+        const svgCount=curr.querySelectorAll("svg").length;
+        if(btnCount>=3&&svgCount>=3&&rc.height>=100&&rc.width>=20&&rc.width<=110){
+          strips.add(curr);
+          break;
+        }
+      }
+    }
+    return[...strips];
+  }
   static downloadContent(e){return t(this,void 0,void 0,(function*(){yield dt.download(e)}))}
   static download(e){
     var n;
     return t(this,void 0,void 0,(function*(){
       const r=new Ne;
-      let a,l,i,sc;
+      let a=[],l="",i="",sc="";
       try{
         yield r.updateProgress({isFirst:!0,isLast:!1,completed:0,total:0,type:"fetch"});
-        const vid=e.parentElement?.querySelector("video[__igdl_id]")||document.querySelector("video[__igdl_id]");
-        sc=Je.getShortcode(e,!0);
-        i=Je.getIgId(vid||e,!0);
+        const vid=dt.getMostVisibleVideo(e);
+        let card=vid;
+        for(let d=0;card&&d<8;card=card.parentElement,d++){
+          if(card.querySelectorAll&&card.querySelectorAll("video").length===1)break;
+        }
+        const urlMatch=location.href.match(/\/(?:p|reel|reels|tv)\/(?!(?:audio|videos|saved|original)\b)([A-Za-z0-9_-]{5,})/);
+        const urlSc=urlMatch&&urlMatch[1]?urlMatch[1]:"";
+        const domSc=Je.getShortcode(e,!1)||(vid?Je.getShortcode(vid,!1):"");
+        sc=urlSc||domSc;
+        const vidId=vid?Je.getIgId(vid,!1):"";
+        i=vidId||(sc?Xe.getIdFromShortcode(sc):"")||Je.getIgId(e,!0);
         try{
           const info=yield Xe.getDownloadInfo(i,-1,sc);
-          a=info.items,l=info.username;
+          a=info?.items||[],l=info?.username||"";
         }catch(err){
-          return void s.createAndAdd("Could not find post.","warn");
+          a=[];
+        }
+        // If vidId and urlSc differed and first lookup failed, retry strictly with urlSc
+        if((!a||0===a.length)&&urlSc){
+          try{
+            const urlId=Xe.getIdFromShortcode(urlSc);
+            const info2=yield Xe.getDownloadInfo(urlId,-1,urlSc);
+            a=info2?.items||[],l=info2?.username||"";
+          }catch(err){}
+        }
+        if(!a||0===a.length){
+          if(vid&&(vid.currentSrc||vid.src)&&String(vid.currentSrc||vid.src).startsWith("http")){
+            const mediaUrl=vid.currentSrc||vid.src;
+            const uname=l||(null===(n=card?.querySelector?.(y.postAccountName))||void 0===n?void 0:n.innerText)||"instagram";
+            a=[{id:i||sc||Date.now(),pk:i||sc||Date.now(),url:mediaUrl,username:uname,taken_at:Math.floor(Date.now()/1e3)}];
+            l=uname;
+          }
         }
       }finally{
         yield r.updateProgress({isFirst:!1,isLast:!0,completed:0,total:0,type:"fetch"});
       }
-      if(!a||0===a.length)return void s.createAndAdd("Could not find post.","warn");
-      const u=l||(null===(n=e.querySelector(y.postAccountName))||void 0===n?void 0:n.innerText)||"unknown";
+      if(!a||0===a.length)return void s.createAndAdd("Could not find Reel post.","warn");
+      const u=l||(null===(n=e?.querySelector?.(y.postAccountName))||void 0===n?void 0:n.innerText)||"unknown";
       a.forEach((item=>{if(!item.username||"unknown"===item.username)item.username=u}));
       const c={imageURL:a.map((e=>e.url)),accountName:u,type:m.single,source:h.ReelsFeed};
       a.length>1?yield Oe(a,void 0,i||sc||"reel"):yield Ie(a[0]),
       yield o.runtime.sendMessage(c);
     }));
   }
-  createDownloadButton(){return t(this,void 0,void 0,(function*(){let e=[...document.querySelectorAll(y.reelsControlsStrip)];0===e.length&&(e=yield this.retryCreateButton()),this.creationTimeoutList.forEach((e=>clearTimeout(e))),this.creationTimeoutList=[],e.forEach((e=>{this.addDownloadButton(e)}))}))}
-  reinitialize(){this.remove(),this.init()}
-  init(){this.removed=!1,super.init()}
-  remove(){this.removed=!0,super.remove(".reels-feed-download-button")}
-  retryCreateButton(e=20,n=0){return t(this,void 0,void 0,(function*(){yield new Promise((e=>{this.creationTimeoutList.push(setTimeout(e,100))}));let t=[...document.querySelectorAll(y.reelsControlsStrip)];return(0===t.length||e<=n)&&(this.removed||(t=yield this.retryCreateButton(e,n+1))),t}))}
+  setupGlobalMenuAndReelsObserver(){
+    document.addEventListener("pointerdown",(evt=>{
+      const tEl=evt.target;
+      if(!tEl||!tEl.closest)return;
+      const btn=tEl.closest('div[role="button"], button');
+      if(btn){
+        this.lastMenuTriggerEl=btn;
+        const v=dt.getMostVisibleVideo(btn);
+        if(v)this.lastActiveVideo=v;
+      }
+    }),!0);
+    document.addEventListener("click",(evt=>{
+      const tEl=evt.target;
+      if(!tEl||!tEl.closest)return;
+      const btn=tEl.closest('div[role="button"], button');
+      if(btn){
+        this.lastMenuTriggerEl=btn;
+        for(const delay of[10,40,100,200,350]){
+          setTimeout((()=>{this.injectIntoOpenMenus();!this.removed&&this.scanAndAddButtons();}),delay);
+        }
+      }
+    }),!0);
+    const obs=new MutationObserver((()=>{
+      this.injectIntoOpenMenus();
+      if(!this.removed||tt.isReelFeed(location.href)){
+        this.scanAndAddButtons();
+      }
+    }));
+    const startObs=()=>{
+      if(document.body){
+        obs.observe(document.body,{childList:!0,subtree:!0});
+      }else{
+        setTimeout(startObs,50);
+      }
+    };
+    startObs();
+    setInterval((()=>{
+      this.injectIntoOpenMenus();
+      if(!this.removed||tt.isReelFeed(location.href)){
+        this.scanAndAddButtons();
+      }
+    }),350);
+  }
+  injectIntoOpenMenus(){
+    // Works for both floating Reels 3-dot popovers (no role="dialog") and post 3-dot modal dialogs!
+    const candidates=document.querySelectorAll('div[role="button"], div[role="menuitem"], button, a, span');
+    const visitedContainers=new Set;
+    for(const el of candidates){
+      const rawTxt=(el.textContent||"").trim().toLowerCase();
+      if("go to post"!==rawTxt&&"copy link"!==rawTxt&&"share to..."!==rawTxt&&"about this account"!==rawTxt)continue;
+      let curr=el.parentElement;
+      let menuList=null;
+      for(let d=0;curr&&d<7;curr=curr.parentElement,d++){
+        if(curr===document.body||curr.tagName==="MAIN")break;
+        const cTxt=(curr.textContent||"").toLowerCase();
+        const hits=["report","go to post","share to","copy link","embed","about this account"].filter(k=>cTxt.includes(k)).length;
+        if(hits>=2&&curr.children.length>=3&&curr.children.length<=15){
+          menuList=curr;
+          break;
+        }
+      }
+      if(!menuList||visitedContainers.has(menuList))continue;
+      visitedContainers.add(menuList);
+      if(menuList.querySelector(".savegram-reel-menu-item"))continue;
+
+      const menuItem=document.createElement("div");
+      menuItem.className="savegram-reel-menu-item";
+      menuItem.setAttribute("role","button");
+      menuItem.setAttribute("tabindex","0");
+
+      const icon=document.createElement("span");
+      icon.className="savegram-reel-menu-icon";
+
+      const label=document.createElement("span");
+      label.innerText="Download Reel";
+
+      menuItem.appendChild(icon);
+      menuItem.appendChild(label);
+
+      const triggerContext=this.lastMenuTriggerEl||this.lastActiveVideo||menuList;
+      menuItem.onclick=evt=>{
+        evt.preventDefault();
+        evt.stopPropagation();
+        dt.downloadContent(triggerContext);
+        try{
+          document.dispatchEvent(new KeyboardEvent("keydown",{key:"Escape",code:"Escape",keyCode:27,which:27,bubbles:!0}));
+          if(this.lastMenuTriggerEl&&this.lastMenuTriggerEl.isConnected){
+            this.lastMenuTriggerEl.click();
+          }
+        }catch(e){}
+      };
+
+      // Insert right at the very top of the menu (above "Report"), matching the user's screenshot!
+      menuList.insertBefore(menuItem,menuList.firstElementChild);
+    }
+  }
+  scanAndAddButtons(){
+    const strips=dt.getReelsControlStrips();
+    for(const el of strips){
+      this.addDownloadButton(el);
+    }
+  }
+  createDownloadButton(){
+    this.scanAndAddButtons();
+    this.injectIntoOpenMenus();
+    return Promise.resolve();
+  }
+  reinitialize(){
+    this.scanAndAddButtons();
+    this.injectIntoOpenMenus();
+  }
+  init(){
+    this.removed=!1;
+    this.scanAndAddButtons();
+    this.injectIntoOpenMenus();
+  }
+  remove(){
+    if(tt.isReelFeed(location.href))return;
+    this.removed=!0;
+    document.querySelectorAll(".reels-feed-download-button, .savegram-reel-menu-item").forEach((el=>{try{el.remove()}catch(e){}}));
+  }
   addDownloadButton(e){
-    if(e.querySelector(".reels-feed-download-button"))return;
+    if(!e||e.querySelector(".reels-feed-download-button"))return;
     const t=document.createElement("span");
-    t.classList.add("reels-feed-download-button"),
-    t.onclick=t=>{t.preventDefault(),t.stopPropagation(),dt.downloadContent(e)},
-    e.prepend(t);
+    t.classList.add("reels-feed-download-button");
+    t.title="Download Reel";
+    t.onclick=evt=>{evt.preventDefault(),evt.stopPropagation(),dt.downloadContent(e)};
+    // Place right above the 3-dots More button if present, or at the top of the action strip
+    const moreBtn=e.querySelector('div[role="button"]:has(svg[aria-label*="More" i]), div[role="button"]:has(svg circle)');
+    const moreWrapper=moreBtn&&moreBtn.parentElement===e?moreBtn:moreBtn?.parentElement?.parentElement===e?moreBtn.parentElement:null;
+    if(moreWrapper){
+      e.insertBefore(t,moreWrapper);
+    }else{
+      e.prepend(t);
+    }
   }
 };
 ft=dt=e([w],ft);

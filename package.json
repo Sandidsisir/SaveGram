@@ -1,6 +1,6 @@
 {
   "name": "savegram",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "SaveGram \u2014 Fast, high-resolution Chrome/Chromium Manifest V3 extension for downloading Instagram photos, videos, carousels, Stories, and Reels.",
   "repository": {
     "type": "git",
