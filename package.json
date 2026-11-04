@@ -1,0 +1,29 @@
+{
+  "name": "savegram",
+  "version": "5.3.4",
+  "description": "SaveGram \u2014 Fast, high-resolution Chrome/Chromium Manifest V3 extension for downloading Instagram photos, videos, carousels, Stories, and Reels.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sandidsisir/SaveGram.git"
+  },
+  "homepage": "https://github.com/Sandidsisir/SaveGram#readme",
+  "bugs": {
+    "url": "https://github.com/Sandidsisir/SaveGram/issues"
+  },
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "lint": "node --check src/js/background.js && node --check src/js/inject.js && node --check src/js/extension.js && node --check src/js/options.js && node --check src/js/options_listener_inject.js",
+    "check": "npm run lint",
+    "pack": "node scripts/pack.js"
+  },
+  "keywords": [
+    "savegram",
+    "instagram",
+    "downloader",
+    "chrome-extension",
+    "manifest-v3",
+    "reels",
+    "stories"
+  ]
+}

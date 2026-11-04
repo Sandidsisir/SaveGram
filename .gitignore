@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build & Release artifacts
+dist/
+*.zip
+*.crx
+*.pem
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.log

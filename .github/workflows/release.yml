@@ -1,0 +1,42 @@
+name: CI & Package SaveGram Extension
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main, master ]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Syntax Check JS Files
+        run: npm run lint
+
+      - name: Package SaveGram Extension ZIP
+        run: npm run pack
+
+      - name: Upload SaveGram Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: savegram-extension
+          path: dist/*.zip
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.zip
+          generate_release_notes: true
