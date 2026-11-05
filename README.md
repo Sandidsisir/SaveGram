@@ -1,18 +1,19 @@
 <div align="center">
   <img src="src/icons/savegram.svg" width="80" height="80" alt="SaveGram Logo" />
   <h1>SaveGram</h1>
-  <p>A lightweight browser extension for downloading photos, videos, carousels, Stories, and Reels from Instagram.</p>
+  <p>A browser extension for downloading photos, videos, carousels, Stories, and Reels from Instagram, with built-in video player controls.</p>
 
   <p>
-    <a href="https://github.com/Sandidsisir/SaveGram/releases/download/v1.1.0/SaveGram-v1.1.0.zip">
-      <img src="https://img.shields.io/badge/Download-SaveGram_v1.1.0_(.zip)-2ea44f?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Download ZIP" />
+    <a href="https://github.com/Sandidsisir/SaveGram/releases/download/v1.2.0/SaveGram-v1.2.0.zip">
+      <img src="https://img.shields.io/badge/Download-SaveGram_v1.2.0_(.zip)-2ea44f?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Download ZIP" />
     </a>
   </p>
 
   <p>
     <a href="https://github.com/Sandidsisir/SaveGram/releases/latest"><img src="https://img.shields.io/github/v/release/Sandidsisir/SaveGram?color=success&label=Release" alt="Latest Release" /></a>
-    <img src="https://img.shields.io/badge/Version-1.1.0-informational" alt="Version 1.1.0" />
+    <img src="https://img.shields.io/badge/Version-1.2.0-informational" alt="Version 1.2.0" />
     <img src="https://img.shields.io/badge/Manifest-V3-blue" alt="Manifest V3" />
+    <img src="https://img.shields.io/badge/Author-sandid-orange" alt="Author: sandid" />
     <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="License: MIT" />
   </p>
 </div>
@@ -20,7 +21,7 @@
 ---
 
 ### Direct Download
-Download the ready-to-use extension archive: **[SaveGram-v1.1.0.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v1.1.0/SaveGram-v1.1.0.zip)**
+Download the ready-to-use extension archive: **[SaveGram-v1.2.0.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v1.2.0/SaveGram-v1.2.0.zip)**
 
 ---
 
@@ -29,7 +30,7 @@ Download the ready-to-use extension archive: **[SaveGram-v1.1.0.zip](https://git
 Setup takes about a minute and requires no developer tools:
 
 1. **Download and unpack the ZIP**:
-   - Download **[SaveGram-v1.1.0.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v1.1.0/SaveGram-v1.1.0.zip)**.
+   - Download **[SaveGram-v1.2.0.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v1.2.0/SaveGram-v1.2.0.zip)**.
    - Right-click the file and click **Extract All**. Keep the extracted folder somewhere permanent (like your Documents folder).
 
 2. **Open your browser's extension manager**:
@@ -43,20 +44,28 @@ Setup takes about a minute and requires no developer tools:
 
 4. **Load the folder**:
    - Click **Load unpacked** in the top-left corner.
-   - Select the extracted `SaveGram-v1.1.0` folder.
+   - Select the extracted `SaveGram-v1.2.0` folder (or the `src` folder if cloned from git).
 
 5. **Start using it**:
-   - Open or refresh [instagram.com](https://www.instagram.com/). Download buttons will appear directly on posts, reels, and stories.
+   - Open or refresh [instagram.com](https://www.instagram.com/). Download buttons and video controls will appear directly on posts, reels, and stories.
 
 ---
 
 ## Features
 
-- **Posts and Videos**: Save images and video files at their original uploaded resolution.
-- **Carousels**: Grab single slides or download every image and video in a post at once.
-- **Stories and Reels**: One-click download buttons on story overlays, reel views, and the native Reels 3-dot menu.
-- **Bulk Profile Downloader**: Collect multiple posts from a profile and export them packed in a ZIP file.
-- **Runs Locally**: Built with Manifest V3. Runs entirely in your browser without outside servers or extra logins.
+- **Media Downloader**:
+  - Save single photos and videos at original resolution.
+  - Download individual carousel slides or all slides at once.
+  - Download Reels and Stories directly from page overlays or from the native Reel 3-dot menu.
+  - Bulk download posts from profiles into a single ZIP file.
+- **Video Player Controls**:
+  - Adds interactive seek bar, play/pause, time display, vertical volume slider, and mute toggle to Instagram videos and Reels.
+  - Picture-in-Picture (PiP) and fullscreen modes.
+  - Extension toolbar popup to configure default playback settings (start muted, autoplay, PiP, time labels, auto-hide delay).
+- **Multi-Language Support**:
+  - Includes translations for English, German, Spanish, Italian, and Portuguese.
+- **Runs Locally**:
+  - Built on Manifest V3. Operates entirely in your browser without external servers or logins.
 
 ---
 
@@ -79,4 +88,4 @@ npm run pack
 
 ## License
 
-[MIT License](LICENSE)
+[MIT License](LICENSE) © 2026 sandid

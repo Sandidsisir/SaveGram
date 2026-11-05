@@ -1,0 +1,101 @@
+{
+  "extensionName": {
+    "message": "SaveGram"
+  },
+  "extensionDescription": {
+    "message": "Aggiunge una barra dei controlli (riproduzione, tempo, volume, schermo intero) ai video di Instagram."
+  },
+  "popupDefaultTitle": {
+    "message": "SaveGram"
+  },
+  "loading": {
+    "message": "Caricamento..."
+  },
+  "settingsTitle": {
+    "message": "Impostazioni"
+  },
+  "settingsSubtitle": {
+    "message": "Controlli per i video di Instagram"
+  },
+  "playbackSection": {
+    "message": "Riproduzione"
+  },
+  "startMutedTitle": {
+    "message": "Avvia silenziato"
+  },
+  "startMutedSubtitle": {
+    "message": "Ogni video parte senza audio finché non lo attivi"
+  },
+  "autoplayTitle": {
+    "message": "Riproduzione automatica"
+  },
+  "autoplaySubtitle": {
+    "message": "Il video evidenziato sullo schermo parte automaticamente"
+  },
+  "barButtonsSection": {
+    "message": "Pulsanti nella barra"
+  },
+  "pictureInPictureTitle": {
+    "message": "Picture-in-picture"
+  },
+  "pictureInPictureSubtitle": {
+    "message": "Finestra video flottante"
+  },
+  "timeLabelTitle": {
+    "message": "Mostra tempo"
+  },
+  "timeLabelSubtitle": {
+    "message": "Mostra il tempo corrente e la durata totale"
+  },
+  "fullscreenTitle": {
+    "message": "Schermo intero"
+  },
+  "fullscreenSubtitle": {
+    "message": "Entra o esci dalla modalità schermo intero"
+  },
+  "controlBarSection": {
+    "message": "Barra dei controlli"
+  },
+  "hideWhenIdleTitle": {
+    "message": "Nascondi quando inattiva"
+  },
+  "hideWhenIdleSubtitle": {
+    "message": "Dopo che il cursore lascia l'area del video"
+  },
+  "hideDelayAriaLabel": {
+    "message": "Tempo prima di nascondere la barra"
+  },
+  "settingsFootnote": {
+    "message": "Le modifiche si applicano subito alle schede Instagram aperte."
+  },
+  "pipDockAriaLabel": {
+    "message": "Picture-in-picture attivo"
+  },
+  "pipDockText": {
+    "message": "Il video è in una finestra flottante. Se non appare sullo schermo, usa Alt+Tab (Windows) o il selettore delle app (macOS)."
+  },
+  "pipDockExitButton": {
+    "message": "Chiudi picture-in-picture"
+  },
+  "playPauseButton": {
+    "message": "Riproduci o metti in pausa"
+  },
+  "videoPositionLabel": {
+    "message": "Posizione del video"
+  },
+  "volumeLevelLabel": {
+    "message": "Livello volume"
+  },
+  "volumeLabel": {
+    "message": "Volume"
+  },
+  "muteToggleButton": {
+    "message": "Attiva/disattiva muto"
+  },
+  "pipToggleButton": {
+    "message": "Picture-in-picture (apri o chiudi finestra flottante)"
+  },
+  "fullscreenButton": {
+    "message": "Schermo intero"
+  }
+}

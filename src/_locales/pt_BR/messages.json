@@ -1,0 +1,101 @@
+{
+  "extensionName": {
+    "message": "SaveGram"
+  },
+  "extensionDescription": {
+    "message": "Adiciona barra de controles (play, tempo, volume, tela cheia) aos vídeos do Instagram."
+  },
+  "popupDefaultTitle": {
+    "message": "SaveGram"
+  },
+  "loading": {
+    "message": "Carregando..."
+  },
+  "settingsTitle": {
+    "message": "Ajustes"
+  },
+  "settingsSubtitle": {
+    "message": "Controles sobre os vídeos do Instagram"
+  },
+  "playbackSection": {
+    "message": "Reprodução"
+  },
+  "startMutedTitle": {
+    "message": "Iniciar mudo"
+  },
+  "startMutedSubtitle": {
+    "message": "Cada vídeo começa sem som até você ativar o áudio"
+  },
+  "autoplayTitle": {
+    "message": "Reprodução automática"
+  },
+  "autoplaySubtitle": {
+    "message": "Vídeo em destaque na tela inicia sozinho"
+  },
+  "barButtonsSection": {
+    "message": "Botões na barra"
+  },
+  "pictureInPictureTitle": {
+    "message": "Picture-in-picture"
+  },
+  "pictureInPictureSubtitle": {
+    "message": "Janela flutuante do vídeo"
+  },
+  "timeLabelTitle": {
+    "message": "Exibir tempo"
+  },
+  "timeLabelSubtitle": {
+    "message": "Mostra tempo atual e duração total"
+  },
+  "fullscreenTitle": {
+    "message": "Tela cheia"
+  },
+  "fullscreenSubtitle": {
+    "message": "Entrar ou sair do modo fullscreen"
+  },
+  "controlBarSection": {
+    "message": "Barra de controles"
+  },
+  "hideWhenIdleTitle": {
+    "message": "Ocultar quando ociosa"
+  },
+  "hideWhenIdleSubtitle": {
+    "message": "Após o cursor sair da área do vídeo"
+  },
+  "hideDelayAriaLabel": {
+    "message": "Tempo até ocultar a barra"
+  },
+  "settingsFootnote": {
+    "message": "As mudanças aplicam-se de imediato nas abas do Instagram abertas."
+  },
+  "pipDockAriaLabel": {
+    "message": "Picture-in-picture ativo"
+  },
+  "pipDockText": {
+    "message": "O vídeo está em janela flutuante. Se não aparecer na tela, use Alt+Tab (Windows) ou o alternador de apps (macOS)."
+  },
+  "pipDockExitButton": {
+    "message": "Encerrar picture-in-picture"
+  },
+  "playPauseButton": {
+    "message": "Reproduzir ou pausar"
+  },
+  "videoPositionLabel": {
+    "message": "Posição no vídeo"
+  },
+  "volumeLevelLabel": {
+    "message": "Nível de volume"
+  },
+  "volumeLabel": {
+    "message": "Volume"
+  },
+  "muteToggleButton": {
+    "message": "Alternar mudo"
+  },
+  "pipToggleButton": {
+    "message": "Picture-in-picture (abrir ou fechar janela flutuante)"
+  },
+  "fullscreenButton": {
+    "message": "Tela cheia"
+  }
+}

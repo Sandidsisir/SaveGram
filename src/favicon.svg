@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Radiant bloom icon">
+  <defs>
+    <path id="long" d="M0,-15 C6,-26 5,-34 0,-42 C-5,-34 -6,-26 0,-15Z"/>
+    <path id="short" d="M0,-15 C4,-21 3.5,-26 0,-31 C-3.5,-26 -4,-21 0,-15Z"/>
+    <circle id="dot" cx="0" cy="-51" r="2.6"/>
+  </defs>
+  <rect width="128" height="128" rx="26" fill="#161616"/>
+  <g transform="translate(64 64)" fill="#ffffff">
+    <!-- long petals with tip dots -->
+    <use xlink:href="#long"/>
+    <use xlink:href="#long" transform="rotate(45)"/>
+    <use xlink:href="#long" transform="rotate(90)"/>
+    <use xlink:href="#long" transform="rotate(135)"/>
+    <use xlink:href="#long" transform="rotate(180)"/>
+    <use xlink:href="#long" transform="rotate(225)"/>
+    <use xlink:href="#long" transform="rotate(270)"/>
+    <use xlink:href="#long" transform="rotate(315)"/>
+    <use xlink:href="#dot"/>
+    <use xlink:href="#dot" transform="rotate(45)"/>
+    <use xlink:href="#dot" transform="rotate(90)"/>
+    <use xlink:href="#dot" transform="rotate(135)"/>
+    <use xlink:href="#dot" transform="rotate(180)"/>
+    <use xlink:href="#dot" transform="rotate(225)"/>
+    <use xlink:href="#dot" transform="rotate(270)"/>
+    <use xlink:href="#dot" transform="rotate(315)"/>
+    <!-- short petals, softer -->
+    <g opacity="0.6">
+      <use xlink:href="#short" transform="rotate(22.5)"/>
+      <use xlink:href="#short" transform="rotate(67.5)"/>
+      <use xlink:href="#short" transform="rotate(112.5)"/>
+      <use xlink:href="#short" transform="rotate(157.5)"/>
+      <use xlink:href="#short" transform="rotate(202.5)"/>
+      <use xlink:href="#short" transform="rotate(247.5)"/>
+      <use xlink:href="#short" transform="rotate(292.5)"/>
+      <use xlink:href="#short" transform="rotate(337.5)"/>
+    </g>
+    <!-- center ring -->
+    <circle r="9" fill="none" stroke="#ffffff" stroke-width="3"/>
+    <circle r="3.2"/>
+  </g>
+</svg>

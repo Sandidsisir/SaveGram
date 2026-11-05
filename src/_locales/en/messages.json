@@ -1,0 +1,101 @@
+{
+  "extensionName": {
+    "message": "SaveGram"
+  },
+  "extensionDescription": {
+    "message": "Adds a control bar (play, time, volume, fullscreen) to Instagram videos."
+  },
+  "popupDefaultTitle": {
+    "message": "SaveGram"
+  },
+  "loading": {
+    "message": "Loading..."
+  },
+  "settingsTitle": {
+    "message": "Settings"
+  },
+  "settingsSubtitle": {
+    "message": "Controls for Instagram videos"
+  },
+  "playbackSection": {
+    "message": "Playback"
+  },
+  "startMutedTitle": {
+    "message": "Start muted"
+  },
+  "startMutedSubtitle": {
+    "message": "Each video starts without sound until you enable audio"
+  },
+  "autoplayTitle": {
+    "message": "Autoplay"
+  },
+  "autoplaySubtitle": {
+    "message": "The highlighted video on screen starts automatically"
+  },
+  "barButtonsSection": {
+    "message": "Bar buttons"
+  },
+  "pictureInPictureTitle": {
+    "message": "Picture-in-picture"
+  },
+  "pictureInPictureSubtitle": {
+    "message": "Floating video window"
+  },
+  "timeLabelTitle": {
+    "message": "Show time"
+  },
+  "timeLabelSubtitle": {
+    "message": "Shows current time and total duration"
+  },
+  "fullscreenTitle": {
+    "message": "Fullscreen"
+  },
+  "fullscreenSubtitle": {
+    "message": "Enter or exit fullscreen mode"
+  },
+  "controlBarSection": {
+    "message": "Control bar"
+  },
+  "hideWhenIdleTitle": {
+    "message": "Hide when idle"
+  },
+  "hideWhenIdleSubtitle": {
+    "message": "After the cursor leaves the video area"
+  },
+  "hideDelayAriaLabel": {
+    "message": "Time before hiding the bar"
+  },
+  "settingsFootnote": {
+    "message": "Changes apply immediately to open Instagram tabs."
+  },
+  "pipDockAriaLabel": {
+    "message": "Picture-in-picture active"
+  },
+  "pipDockText": {
+    "message": "The video is in a floating window. If it does not appear on screen, use Alt+Tab (Windows) or the app switcher (macOS)."
+  },
+  "pipDockExitButton": {
+    "message": "Close picture-in-picture"
+  },
+  "playPauseButton": {
+    "message": "Play or pause"
+  },
+  "videoPositionLabel": {
+    "message": "Video position"
+  },
+  "volumeLevelLabel": {
+    "message": "Volume level"
+  },
+  "volumeLabel": {
+    "message": "Volume"
+  },
+  "muteToggleButton": {
+    "message": "Toggle mute"
+  },
+  "pipToggleButton": {
+    "message": "Picture-in-picture (open or close floating window)"
+  },
+  "fullscreenButton": {
+    "message": "Fullscreen"
+  }
+}

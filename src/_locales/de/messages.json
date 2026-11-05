@@ -1,0 +1,101 @@
+{
+  "extensionName": {
+    "message": "SaveGram"
+  },
+  "extensionDescription": {
+    "message": "Fügt Instagram-Videos eine Steuerleiste hinzu (Wiedergabe, Zeit, Lautstärke, Vollbild)."
+  },
+  "popupDefaultTitle": {
+    "message": "SaveGram"
+  },
+  "loading": {
+    "message": "Wird geladen..."
+  },
+  "settingsTitle": {
+    "message": "Einstellungen"
+  },
+  "settingsSubtitle": {
+    "message": "Steuerungen für Instagram-Videos"
+  },
+  "playbackSection": {
+    "message": "Wiedergabe"
+  },
+  "startMutedTitle": {
+    "message": "Stumm starten"
+  },
+  "startMutedSubtitle": {
+    "message": "Jedes Video startet ohne Ton, bis du den Ton aktivierst"
+  },
+  "autoplayTitle": {
+    "message": "Automatische Wiedergabe"
+  },
+  "autoplaySubtitle": {
+    "message": "Das hervorgehobene Video auf dem Bildschirm startet automatisch"
+  },
+  "barButtonsSection": {
+    "message": "Schaltflächen in der Leiste"
+  },
+  "pictureInPictureTitle": {
+    "message": "Bild-in-Bild"
+  },
+  "pictureInPictureSubtitle": {
+    "message": "Schwebendes Videofenster"
+  },
+  "timeLabelTitle": {
+    "message": "Zeit anzeigen"
+  },
+  "timeLabelSubtitle": {
+    "message": "Zeigt aktuelle Zeit und Gesamtdauer"
+  },
+  "fullscreenTitle": {
+    "message": "Vollbild"
+  },
+  "fullscreenSubtitle": {
+    "message": "Vollbildmodus öffnen oder verlassen"
+  },
+  "controlBarSection": {
+    "message": "Steuerleiste"
+  },
+  "hideWhenIdleTitle": {
+    "message": "Bei Inaktivität ausblenden"
+  },
+  "hideWhenIdleSubtitle": {
+    "message": "Nachdem der Cursor den Videobereich verlassen hat"
+  },
+  "hideDelayAriaLabel": {
+    "message": "Zeit bis zum Ausblenden der Leiste"
+  },
+  "settingsFootnote": {
+    "message": "Änderungen werden sofort auf geöffneten Instagram-Tabs angewendet."
+  },
+  "pipDockAriaLabel": {
+    "message": "Bild-in-Bild aktiv"
+  },
+  "pipDockText": {
+    "message": "Das Video befindet sich in einem schwebenden Fenster. Wenn es nicht auf dem Bildschirm erscheint, verwende Alt+Tab (Windows) oder den App-Umschalter (macOS)."
+  },
+  "pipDockExitButton": {
+    "message": "Bild-in-Bild beenden"
+  },
+  "playPauseButton": {
+    "message": "Wiedergeben oder pausieren"
+  },
+  "videoPositionLabel": {
+    "message": "Videoposition"
+  },
+  "volumeLevelLabel": {
+    "message": "Lautstärkepegel"
+  },
+  "volumeLabel": {
+    "message": "Lautstärke"
+  },
+  "muteToggleButton": {
+    "message": "Stummschaltung umschalten"
+  },
+  "pipToggleButton": {
+    "message": "Bild-in-Bild (schwebendes Fenster öffnen oder schließen)"
+  },
+  "fullscreenButton": {
+    "message": "Vollbild"
+  }
+}

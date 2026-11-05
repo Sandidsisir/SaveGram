@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0] - 2026-11-06
+
+### Added
+- Video Player Controls: Added player control bar to Instagram videos and Reels with play/pause, interactive seek bar, current/total time display, vertical volume slider, mute toggle, Picture-in-Picture (PiP), and fullscreen mode.
+- Toolbar Settings Popup: Added popup menu with preferences for default muted state, autoplay, PiP, time labels, fullscreen, and control bar auto-hide delay.
+- Multi-Language Localization: Added localization support across 5 languages (English, German, Spanish, Italian, and Portuguese).
+- Author attribution configured to `sandid`.
+
 ## [1.1.0] - 2026-11-05
 
 ### Added
@@ -14,17 +22,6 @@
 ## [1.0.0] - Initial Open-Source Release
 
 ### Fixed
-- **Profile "Download All" & Post Resolution (`js/inject.js`)**:
-  - Hooked `JSON.parse` and `XMLHttpRequest.prototype.open` synchronously so unmasked GraphQL responses (`xdt_api__v1__feed__user_timeline_graphql_connection`, `xdt_shortcode_media`, `image_versions2`, `video_versions`, `carousel_media`) are harvested before CometRelay masks fragments.
-  - Added fallback harvesting directly from `PolarisRelayEnvironment.getStore().getSource()`.
-  - Fixed cache merge logic so single-image and single-video posts merge cached unmasked media fields instead of requiring `getSlideCount >= 2`.
-  - Added support for newline-delimited multi-chunk streaming GraphQL responses (`@defer`).
-- **DOM Shortcode & React Fiber PK Extraction (`js/inject.js` & `js/extension.js`)**:
-  - Restricted React Fiber ID matching to 10+ digit Instagram PKs (`/^\d{10,}$/`) so list indices (`"0"`, `"1"`) are never misidentified as post IDs.
-  - Added support for `/<username>/p/<shortcode>/`, `/<username>/reel/<shortcode>/`, and `/reels/<shortcode>/` permalink formats.
-  - Added `translateX` and `?img_index=` slide index detection for virtualized carousels.
-- **Media Blob Fetching & Saving (`js/extension.js` & `js/background.js`)**:
-  - Updated content-script `fetch()` to use `{ cache: "no-store", mode: "cors", credentials: "omit" }` to bypass non-CORS cached `<img>` responses in Chrome.
-  - Added `fetchMediaBlob` fallback in the Manifest V3 background service worker (`js/background.js`) using extension `host_permissions`.
-  - Fixed `triggerBrowserDownload` (`Re`) to create a fresh `<a download>` element per file and delay `URL.revokeObjectURL` by 60 seconds.
-  - Added `try / finally` cleanup around all `"Finding posts..."` and `"Downloading..."` progress bars so they never remain stuck on screen.
+- Profile "Download All" & Post Resolution (`js/inject.js`).
+- DOM Shortcode & React Fiber PK Extraction.
+- Media Blob Fetching & Saving via Manifest V3 Service Worker.

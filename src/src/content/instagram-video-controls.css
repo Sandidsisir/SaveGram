@@ -1,0 +1,553 @@
+/* Controles estilo Apple (vidro, SF, cantos suaves) */
+
+.ig-vc-overlay {
+  --igvc-radius: 10px;
+  /* Blur mais forte + tinta mais leve = vidro legível (senão vira “mancha” opaca) */
+  --igvc-blur: 40px;
+  --igvc-frost: rgba(22, 22, 24, 0.34);
+  --igvc-hairline: rgba(255, 255, 255, 0.22);
+  --igvc-shadow: 0 6px 24px rgba(0, 0, 0, 0.28);
+  --igvc-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --igvc-bottom-safe: 0px;
+
+  position: fixed;
+  /* Toasts curtos (“Enviada”): TS sobe ancestral (`IGVC_TOAST_ABOVE_OVERLAY_Z`). Sheets: `igvcHasBlockingIgModal`. */
+  z-index: 100000;
+  box-sizing: border-box;
+  pointer-events: none;
+  border-radius: var(--igvc-radius);
+  overflow: visible;
+  box-shadow: none;
+}
+
+.ig-vc-overlay * {
+  box-sizing: border-box;
+}
+
+.ig-vc-overlay .ig-vc-bar {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: calc(6px + var(--igvc-bottom-safe));
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  /* Mesmo inset vertical e horizontal — o play não fica “afastado” das laterais */
+  padding: 5px 5px;
+  pointer-events: none;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'SF Pro Text',
+    'SF Pro Display',
+    'Segoe UI',
+    system-ui,
+    sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.96);
+  border-radius: 9999px;
+  background: var(--igvc-frost);
+  border: 0.5px solid var(--igvc-hairline);
+  box-shadow: var(--igvc-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  transform: translateZ(0) translateY(4px) scale(0.99);
+  transition:
+    opacity 0.32s var(--igvc-ease),
+    transform 0.32s var(--igvc-ease);
+}
+
+.ig-vc-overlay.ig-vc-bar-visible .ig-vc-bar {
+  opacity: 1;
+  transform: translateZ(0) translateY(0) scale(1);
+  pointer-events: auto;
+  /* Blur só com barra visível — evita custo de composição com N overlays ocultos. */
+  backdrop-filter: saturate(200%) blur(var(--igvc-blur));
+  -webkit-backdrop-filter: saturate(200%) blur(var(--igvc-blur));
+}
+
+/* Carrossel/modal: overlay não captura hover — só a barra (via .ig-vc-bar-visible). */
+.ig-vc-overlay.ig-vc-overlay-live {
+  pointer-events: none;
+}
+
+/* Somente o footer (área da barra/player) aciona os controles. */
+.ig-vc-overlay .ig-vc-hover-hit {
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* Mesmo `bottom` da `.ig-vc-bar` para alinhar verticalmente 100%. */
+  bottom: calc(6px + var(--igvc-bottom-safe));
+  height: var(--igvc-footer-hit-height, 48px);
+  z-index: 1;
+  pointer-events: auto;
+  background: transparent;
+}
+
+.ig-vc-overlay.ig-vc-bar-visible .ig-vc-hover-hit {
+  pointer-events: none;
+}
+
+.ig-vc-overlay .ig-vc-btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.11);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.12);
+  transition:
+    background 0.2s var(--igvc-ease),
+    transform 0.15s var(--igvc-ease),
+    box-shadow 0.2s var(--igvc-ease);
+}
+
+.ig-vc-overlay .ig-vc-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.18);
+}
+
+.ig-vc-overlay .ig-vc-btn:active {
+  transform: scale(0.92);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.ig-vc-overlay .ig-vc-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.38;
+  transform: none;
+  pointer-events: none;
+}
+
+.ig-vc-overlay .ig-vc-btn-icon {
+  display: inline-flex;
+  width: 15px;
+  height: 15px;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  pointer-events: none;
+}
+
+.ig-vc-overlay .ig-vc-btn-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+.ig-vc-overlay .ig-vc-btn-icon--bump {
+  animation: igvc-icon-bump 0.34s var(--igvc-ease);
+}
+
+.ig-vc-overlay .ig-vc-btn-icon--bump-vol {
+  animation: igvc-icon-bump-vol 0.34s var(--igvc-ease);
+}
+
+@keyframes igvc-icon-bump {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  45% {
+    transform: scale(0.68) rotate(-6deg);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes igvc-icon-bump-vol {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(0.72) translateY(3px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Slider de tempo: trilha + thumb em DOM + hit (mesma ideia do volume). */
+.ig-vc-overlay .ig-vc-seek-wrap {
+  flex: 1 1 auto;
+  min-width: 36px;
+  min-height: 28px;
+  margin: 0 1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ig-vc-overlay .ig-vc-seek-visual-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  box-sizing: border-box;
+  border-radius: 100px;
+  pointer-events: none;
+  --igvc-sfill: 0%;
+  background: linear-gradient(
+    to right,
+    #fff 0%,
+    #fff var(--igvc-sfill, 0%),
+    rgba(255, 255, 255, 0.28) var(--igvc-sfill, 0%),
+    rgba(255, 255, 255, 0.28) 100%
+  );
+}
+
+.ig-vc-overlay .ig-vc-seek-visual-thumb {
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+.ig-vc-overlay .ig-vc-seek-hit {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 2;
+  height: 28px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  touch-action: none;
+  background: transparent;
+}
+
+.ig-vc-overlay .ig-vc-seek-wrap .ig-vc-range {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 1;
+  width: 100%;
+  height: 4px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  flex: none;
+  min-width: 0;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+  accent-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+.ig-vc-overlay .ig-vc-audio-wrap {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 30px;
+  min-height: 30px;
+}
+
+.ig-vc-overlay .ig-vc-time {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  text-align: left;
+  white-space: nowrap;
+  margin-left: 2px;
+  margin-right: 1px;
+  font-size: 11px;
+  line-height: 30px;
+  height: 30px;
+  color: rgba(255, 255, 255, 0.92);
+  font-variant-numeric: tabular-nums;
+}
+
+.ig-vc-overlay .ig-vc-audio-wrap .ig-vc-audio-btn {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+.ig-vc-overlay .ig-vc-audio-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: 24px;
+  z-index: 2;
+}
+
+/*
+ * Filho direto do .ig-vc-overlay (não da .ig-vc-bar): no Chrome, backdrop-filter
+ * dentro de outro elemento com backdrop-filter não amostra o vídeo — o blur some.
+ * left / width / bottom vêm do TS (syncVolumePopPosition).
+ */
+.ig-vc-overlay .ig-vc-volume-pop {
+  position: absolute;
+  z-index: 20;
+  box-sizing: border-box;
+  /* Folga vertical para o thumb do range em 0% e 100% não encostar na cápsula */
+  padding: 14px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  overflow: visible;
+  background: var(--igvc-frost);
+  border: 0.5px solid var(--igvc-hairline);
+  box-shadow: var(--igvc-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateZ(0) translateY(6px);
+  transition:
+    opacity 0.32s var(--igvc-ease),
+    visibility 0.32s var(--igvc-ease),
+    transform 0.32s var(--igvc-ease),
+    filter 0.2s var(--igvc-ease);
+}
+
+.ig-vc-overlay .ig-vc-volume-pop::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 18px;
+}
+
+.ig-vc-overlay:has(.ig-vc-audio-wrap:hover) .ig-vc-volume-pop,
+.ig-vc-overlay:has(.ig-vc-audio-wrap:focus-within) .ig-vc-volume-pop,
+.ig-vc-overlay .ig-vc-volume-pop:hover {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateZ(0) translateY(0);
+  filter: brightness(1.06);
+  backdrop-filter: saturate(200%) blur(var(--igvc-blur));
+  -webkit-backdrop-filter: saturate(200%) blur(var(--igvc-blur));
+}
+
+.ig-vc-overlay .ig-vc-volume-vertical-rotor {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  min-height: 64px;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+/* Trilha vertical real: baixo = 0, topo = máx — branco só até `--igvc-vfill` (o `range` nativo fica invisível por cima). */
+.ig-vc-overlay .ig-vc-volume-visual-bar {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: 4px;
+  height: 64px;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  border-radius: 100px;
+  pointer-events: none;
+  --igvc-vfill: 0%;
+  background: linear-gradient(
+    to top,
+    #fff 0%,
+    #fff var(--igvc-vfill, 0%),
+    rgba(255, 255, 255, 0.28) var(--igvc-vfill, 0%),
+    rgba(255, 255, 255, 0.28) 100%
+  );
+}
+
+.ig-vc-overlay .ig-vc-volume-visual-thumb {
+  position: absolute;
+  left: 50%;
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+
+/* Área de arrasto maior que a trilha; `clientY` → volume (o `range` rotacionado mapeia mal o cursor). */
+.ig-vc-overlay .ig-vc-volume-hit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: 28px;
+  height: 72px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  touch-action: none;
+  background: transparent;
+}
+
+.ig-vc-overlay .ig-vc-volume-vertical {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 64px;
+  height: 4px;
+  padding: 0;
+  border: none;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  transform-origin: center center;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+/* Faixa inferior do Reels (autor/caption): sobe quando a barra da extensão aparece. */
+.ig-vc-reels-chrome-shift {
+  transform: translateZ(0) translateY(0) !important;
+  /* O IG aplica `transition` nos nós; `!important` garante o mesmo easing da barra. */
+  transition: transform 0.32s var(--igvc-ease, cubic-bezier(0.25, 0.1, 0.25, 1)) !important;
+  will-change: transform;
+  overflow: visible !important;
+}
+
+.ig-vc-reels-chrome-shift--up {
+  transform: translateZ(0) translateY(calc(-1 * var(--igvc-reels-shift, 44px))) !important;
+}
+
+/* Ancestrais do footer com overflow/clip — liberados só enquanto o shift está ativo. */
+.ig-vc-reels-chrome-unclip {
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  clip: auto !important;
+  clip-path: none !important;
+  contain: none !important;
+  max-height: none !important;
+}
+
+.ig-vc-native-mute-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.ig-vc-carousel-native-hidden,
+.ig-vc-carousel-slide-inactive [role='group'][aria-label='Video player'] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.ig-vc-carousel-slide-inactive {
+  pointer-events: none !important;
+}
+
+/* Com PiP ativo o overlay do vídeo some; este bloco fica na aba para encerrar PiP e orientar Alt+Tab. */
+.ig-vc-pip-dock {
+  position: fixed;
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  transform: translateX(-50%);
+  z-index: 9600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: min(420px, calc(100vw - 24px));
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'SF Pro Text',
+    'Segoe UI',
+    system-ui,
+    sans-serif;
+  font-size: 12px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(22, 22, 24, 0.88);
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+.ig-vc-pip-dock[hidden] {
+  display: none !important;
+}
+
+.ig-vc-pip-dock__text {
+  margin: 0;
+  text-align: center;
+}
+
+.ig-vc-pip-dock__btn {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #0a0a0b;
+  background: #fff;
+}
+
+.ig-vc-pip-dock__btn:hover {
+  filter: brightness(1.05);
+}
+
+.ig-vc-pip-dock__btn:active {
+  transform: scale(0.98);
+}
+
+/* Tela cheia: o IG costuma usar `cover`, que corta o quadro; `contain` preserva a proporção. */
+video:fullscreen,
+video:-webkit-full-screen {
+  object-fit: contain !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: #000 !important;
+}

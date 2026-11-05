@@ -2,7 +2,7 @@
 .ListItem{transition:background-color .3s;padding:16px;cursor:pointer;display:flex;flex-direction:row;justify-content:space-between;align-items:center}.ListItem:not(:last-child){border-bottom:2px solid #333}.ListItem:hover{transition:background-color 0s;background-color:#222}.ListItem>*:first-child{flex-grow:1}.ListItem .Title{font-weight:bold;font-size:1.2rem}.ListItem .Subtitle{font-weight:normal;opacity:.9}.ListItem .Children{margin-left:16px;display:flex;gap:8px}
 body{font-family:Seravek,"Gill Sans Nova",Ubuntu,Calibri,"DejaVu Sans",source-sans-pro,sans-serif;font-weight:normal;margin:0;background-color:#000;color:#f5f5f5;font-size:16px;min-width:300px;padding:32px 64px}.Container{max-width:640px;margin:auto}.Menu{background-color:#111;border-radius:16px;overflow:hidden}.Directory{margin-top:8px;background-color:#333;padding:8px 16px;border-radius:8px;max-width:400px}
 /*!
- * Copyright (c) 2023. SaveGram
+ * Copyright (c) 2023. sandid
  * This file (Toggle.scss) is part of InstagramDownloader which is not released
  * under any licence.
  * Any usage of this code outside this project is not allowed.
