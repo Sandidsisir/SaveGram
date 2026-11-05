@@ -2,7 +2,7 @@
   "name": "savegram",
   "version": "1.2.0",
   "author": "sandid",
-  "description": "SaveGram — Fast, high-resolution Chrome/Chromium Manifest V3 extension for downloading Instagram photos, videos, carousels, Stories, and Reels with built-in video playback controls.",
+  "description": "A browser extension for saving Instagram media directly to your computer.",
   "repository": {
     "type": "git",
     "url": "https://github.com/Sandidsisir/SaveGram.git"

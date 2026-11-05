@@ -1,7 +1,7 @@
 <div align="center">
   <img src="src/icons/savegram.svg" width="80" height="80" alt="SaveGram Logo" />
   <h1>SaveGram</h1>
-  <p>A browser extension for downloading photos, videos, carousels, Stories, and Reels from Instagram, with built-in video player controls.</p>
+  <p>A browser extension for saving Instagram media directly to your computer.</p>
 
   <p>
     <a href="https://github.com/Sandidsisir/SaveGram/releases/download/v1.2.0/SaveGram-v1.2.0.zip">
