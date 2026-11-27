@@ -97,5 +97,11 @@
   },
   "fullscreenButton": {
     "message": "Vollbild"
+  },
+  "videoControlsEnabledTitle": {
+    "message": "Videosteuerung"
+  },
+  "videoControlsEnabledSubtitle": {
+    "message": "Benutzerdefinierte Steuerleiste für Instagram-Videos anzeigen"
   }
 }

@@ -1058,9 +1058,13 @@ let ft=dt=class extends p{
       'main svg[aria-label*="Save" i], main svg[aria-label*="More" i], ' +
       'main div[role="button"] svg'
     );
+    const checkedParents=new Set;
     for(const svg of candidateSvgs){
       let curr=svg.closest('div[role="button"], button')?.parentElement;
       for(let depth=0;curr&&depth<6;curr=curr.parentElement,depth++){
+        if(checkedParents.has(curr))break;
+        checkedParents.add(curr);
+        if(curr.querySelector(".reels-feed-download-button"))break;
         if(curr.querySelector("video"))break;
         const rc=curr.getBoundingClientRect();
         if(rc.width>110)break;
@@ -1143,15 +1147,37 @@ let ft=dt=class extends p{
       const btn=tEl.closest('div[role="button"], button');
       if(btn){
         this.lastMenuTriggerEl=btn;
-        for(const delay of[10,40,100,200,350]){
-          setTimeout((()=>{this.injectIntoOpenMenus();!this.removed&&this.scanAndAddButtons();}),delay);
+        this._lastClickTs=Date.now();
+        for(const delay of[60,220]){
+          setTimeout((()=>{this.injectIntoOpenMenus();tt.isReelFeed(location.href)&&this.scanAndAddButtons();}),delay);
         }
       }
     }),!0);
-    const obs=new MutationObserver((()=>{
-      this.injectIntoOpenMenus();
-      if(!this.removed||tt.isReelFeed(location.href)){
-        this.scanAndAddButtons();
+    this._scanTimer=0;
+    this._lastClickTs=0;
+    const scheduleScan=()=>{
+      if(this._scanTimer)return;
+      this._scanTimer=setTimeout((()=>{
+        this._scanTimer=0;
+        if(Date.now()-this._lastClickTs<2000||document.querySelector('[role="dialog"], [role="menu"]')){
+          this.injectIntoOpenMenus();
+        }
+        if(tt.isReelFeed(location.href)){
+          this.scanAndAddButtons();
+        }
+      }),200);
+    };
+    const obs=new MutationObserver((muts=>{
+      for(const m of muts){
+        const tgt=m.target;
+        if(tgt&&tgt.closest&&(tgt.closest('.ig-vc-overlay')||tgt.closest('.savegram-reel-menu-item')))continue;
+        if(m.addedNodes&&m.addedNodes.length>0){
+          let relevant=!1;
+          for(const nd of m.addedNodes){
+            if(nd.nodeType===1&&!(nd.classList&&(nd.classList.contains('ig-vc-overlay')||nd.classList.contains('reels-feed-download-button')||nd.classList.contains('savegram-reel-menu-item')))){relevant=!0;break;}
+          }
+          if(relevant){scheduleScan();return;}
+        }
       }
     }));
     const startObs=()=>{
@@ -1163,15 +1189,16 @@ let ft=dt=class extends p{
     };
     startObs();
     setInterval((()=>{
-      this.injectIntoOpenMenus();
-      if(!this.removed||tt.isReelFeed(location.href)){
+      if(document.visibilityState==='hidden')return;
+      if(tt.isReelFeed(location.href)){
         this.scanAndAddButtons();
       }
-    }),350);
+    }),1500);
   }
   injectIntoOpenMenus(){
     // Works for both floating Reels 3-dot popovers (no role="dialog") and post 3-dot modal dialogs!
-    const candidates=document.querySelectorAll('div[role="button"], div[role="menuitem"], button, a, span');
+    const menuRoots=document.querySelectorAll('[role="dialog"], [role="menu"]');
+    const candidates=menuRoots.length>0?document.querySelectorAll('[role="dialog"] button, [role="dialog"] [role="button"], [role="menu"] [role="menuitem"], [role="menu"] [role="button"], [role="dialog"] span, [role="menu"] span'):document.querySelectorAll('div[role="button"], div[role="menuitem"], button');
     const visitedContainers=new Set;
     for(const el of candidates){
       const rawTxt=(el.textContent||"").trim().toLowerCase();

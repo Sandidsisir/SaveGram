@@ -97,5 +97,11 @@
   },
   "fullscreenButton": {
     "message": "Schermo intero"
+  },
+  "videoControlsEnabledTitle": {
+    "message": "Controlli video"
+  },
+  "videoControlsEnabledSubtitle": {
+    "message": "Mostra barra di controllo personalizzata sui video di Instagram"
   }
 }

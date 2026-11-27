@@ -97,5 +97,11 @@
   },
   "fullscreenButton": {
     "message": "Tela cheia"
+  },
+  "videoControlsEnabledTitle": {
+    "message": "Controles de vídeo"
+  },
+  "videoControlsEnabledSubtitle": {
+    "message": "Exibir barra de controles personalizada nos vídeos do Instagram"
   }
 }

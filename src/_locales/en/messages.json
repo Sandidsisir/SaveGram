@@ -97,5 +97,11 @@
   },
   "fullscreenButton": {
     "message": "Fullscreen"
+  },
+  "videoControlsEnabledTitle": {
+    "message": "Video controls"
+  },
+  "videoControlsEnabledSubtitle": {
+    "message": "Show custom player controls on Instagram videos"
   }
 }

@@ -4,14 +4,14 @@
   <p>A browser extension for saving Instagram media directly to your computer.</p>
 
   <p>
-    <a href="https://github.com/Sandidsisir/SaveGram/releases/download/v1.2.0/SaveGram-v1.2.0.zip">
-      <img src="https://img.shields.io/badge/Download-SaveGram_v1.2.0_(.zip)-2ea44f?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Download ZIP" />
+    <a href="https://github.com/Sandidsisir/SaveGram/releases/download/v1.3.0/SaveGram-v1.3.0.zip">
+      <img src="https://img.shields.io/badge/Download-SaveGram_v1.3.0_(.zip)-2ea44f?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Download ZIP" />
     </a>
   </p>
 
   <p>
     <a href="https://github.com/Sandidsisir/SaveGram/releases/latest"><img src="https://img.shields.io/github/v/release/Sandidsisir/SaveGram?color=success&label=Release" alt="Latest Release" /></a>
-    <img src="https://img.shields.io/badge/Version-1.2.0-informational" alt="Version 1.2.0" />
+    <img src="https://img.shields.io/badge/Version-1.3.0-informational" alt="Version 1.3.0" />
     <img src="https://img.shields.io/badge/Manifest-V3-blue" alt="Manifest V3" />
     <img src="https://img.shields.io/badge/Author-sandid-orange" alt="Author: sandid" />
     <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="License: MIT" />
@@ -21,7 +21,7 @@
 ---
 
 ### Direct Download
-Download the ready-to-use extension archive: **[SaveGram-v1.2.0.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v1.2.0/SaveGram-v1.2.0.zip)**
+Download the ready-to-use extension archive: **[SaveGram-v1.3.0.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v1.3.0/SaveGram-v1.3.0.zip)**
 
 ---
 
@@ -30,7 +30,7 @@ Download the ready-to-use extension archive: **[SaveGram-v1.2.0.zip](https://git
 Setup takes about a minute and requires no developer tools:
 
 1. **Download and unpack the ZIP**:
-   - Download **[SaveGram-v1.2.0.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v1.2.0/SaveGram-v1.2.0.zip)**.
+   - Download **[SaveGram-v1.3.0.zip](https://github.com/Sandidsisir/SaveGram/releases/download/v1.3.0/SaveGram-v1.3.0.zip)**.
    - Right-click the file and click **Extract All**. Keep the extracted folder somewhere permanent (like your Documents folder).
 
 2. **Open your browser's extension manager**:
@@ -44,7 +44,7 @@ Setup takes about a minute and requires no developer tools:
 
 4. **Load the folder**:
    - Click **Load unpacked** in the top-left corner.
-   - Select the extracted `SaveGram-v1.2.0` folder (or the `src` folder if cloned from git).
+   - Select the extracted `SaveGram-v1.3.0` folder (or the `src` folder if cloned from git).
 
 5. **Start using it**:
    - Open or refresh [instagram.com](https://www.instagram.com/). Download buttons and video controls will appear directly on posts, reels, and stories.
@@ -61,7 +61,7 @@ Setup takes about a minute and requires no developer tools:
 - **Video Player Controls**:
   - Adds interactive seek bar, play/pause, time display, vertical volume slider, and mute toggle to Instagram videos and Reels.
   - Picture-in-Picture (PiP) and fullscreen modes.
-  - Extension toolbar popup to configure default playback settings (start muted, autoplay, PiP, time labels, auto-hide delay).
+  - Extension toolbar popup to toggle custom video controls on/off and configure default playback settings (start muted, autoplay, PiP, time labels, auto-hide delay).
 - **Multi-Language Support**:
   - Includes translations for English, German, Spanish, Italian, and Portuguese.
 - **Runs Locally**:
